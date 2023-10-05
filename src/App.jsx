@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Card from "./components/Card";
+import { useWishlistContext } from "./WishlistContext";
 
 const App = () => {
+  const { updateWishlist, wishlist } = useWishlistContext();
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const getFilm = async () => {
+  const getMovies = async () => {
     const options = {
       method: "GET",
       headers: {
@@ -20,16 +22,14 @@ const App = () => {
       "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
       options
     )
-      .then((response) => response.json())
-      .then((res) => {
-        setMovies(res.results);
-        setIsLoading(false);
-      })
-      .catch((err) => console.error(err));
+      .then((http) => http.json())
+      .then((res) => setMovies(res.results))
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
   };
 
   useEffect(() => {
-    getFilm();
+    getMovies();
   }, []);
 
   if (isLoading === true) return null;
@@ -38,21 +38,18 @@ const App = () => {
       <nav className="h-12 bg-slate-800 mb-10">
         <ul className="h-full flex items-center justify-end px-10 ">
           <li className="text-red-500">
-            <Link to={`/login`}>Login</Link>
+            <Link to={`/wishlist`}>Wishlist</Link>
           </li>
         </ul>
       </nav>
-
       <div className="px-6 ">
         <h1 className="font-bold mb-10 text-3xl text-red-500">Trending</h1>
-
         <div className="flex flex-wrap gap-10 justify-center">
           {movies.map((movie) => (
             <Card
-              key={movie.id}
-              title={movie.title}
-              desc={movie.overview}
-              image={movie.poster_path}
+              {...movie}
+              updateWishlist={updateWishlist}
+              wishlist={wishlist}
             />
           ))}
         </div>
