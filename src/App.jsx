@@ -1,10 +1,8 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Card from "./components/Card";
-import { useWishlistContext } from "./WishlistContext";
 
 const App = () => {
-  const { updateWishlist, wishlist } = useWishlistContext();
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -46,11 +44,7 @@ const App = () => {
         <h1 className="font-bold mb-10 text-3xl text-red-500">Trending</h1>
         <div className="flex flex-wrap gap-10 justify-center">
           {movies.map((movie) => (
-            <Card
-              {...movie}
-              updateWishlist={updateWishlist}
-              wishlist={wishlist}
-            />
+            <Card {...movie} />
           ))}
         </div>
       </div>

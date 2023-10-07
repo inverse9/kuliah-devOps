@@ -1,6 +1,6 @@
-import { useState, createContext, useContext, useEffect } from "react";
+import { useState, createContext, useContext } from "react";
 
-const Wishlist = createContext(null);
+const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState([]);
@@ -13,20 +13,16 @@ export const WishlistProvider = ({ children }) => {
     setWishlist((val) => [...val, movie]);
   };
 
-  useEffect(() => {
-    console.log(wishlist);
-  }, [wishlist]);
-
   return (
-    <Wishlist.Provider
+    <WishlistContext.Provider
       value={{
         wishlist,
         updateWishlist,
       }}
     >
       {children}
-    </Wishlist.Provider>
+    </WishlistContext.Provider>
   );
 };
 
-export const useWishlistContext = () => useContext(Wishlist);
+export const useWishlistContext = () => useContext(WishlistContext);

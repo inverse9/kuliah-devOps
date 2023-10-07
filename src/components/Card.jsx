@@ -1,19 +1,15 @@
 import React from "react";
+import { useWishlistContext } from "../WishlistContext";
 
 const Card = (movie) => {
-  const {
-    id,
-    original_title,
-    poster_path,
-    overview,
-    updateWishlist,
-    wishlist,
-  } = movie;
+  const { updateWishlist, wishlist } = useWishlistContext();
+  const { id, original_title, poster_path, overview } = movie;
 
   const wishlistState = wishlist.find((item) => item.id === movie.id);
 
   return (
     <div
+      data-testid={id}
       key={id}
       className="bg-slate-800 text-slate-100 w-full sm:w-1/3 md:w-1/4 lg:w-1/6 group"
     >
