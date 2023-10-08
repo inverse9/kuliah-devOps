@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Card from "./components/Card";
 import { useWishlistContext } from "./WishlistContext";
 
 const Wishlist = () => {
-  const { updateWishlist, wishlist } = useWishlistContext();
+  const { wishlist } = useWishlistContext();
   return (
     <>
       <h1 className="font-bold mb-10 text-3xl text-red-500 px-6">
@@ -15,11 +15,9 @@ const Wishlist = () => {
           className="flex flex-wrap gap-10 relative flex-1 px-6"
         >
           {wishlist.map((movie) => (
-            <Card
-              {...movie}
-              updateWishlist={updateWishlist}
-              wishlist={wishlist}
-            />
+            <Fragment key={movie.id}>
+              <Card {...movie} />
+            </Fragment>
           ))}
         </div>
       ) : (

@@ -32,7 +32,7 @@ describe("Wishlist Context", () => {
         <TestingComponent movie={movie} />
       </WishlistProvider>
     );
-
+    expect(getByTestId("wishlist-length")).toHaveTextContent("0");
     fireEvent.click(getByRole("button"));
     expect(getByTestId("wishlist-length")).toHaveTextContent("1");
   });
@@ -47,7 +47,9 @@ describe("Wishlist Context", () => {
         <TestingComponent movie={movie} />
       </WishlistProvider>
     );
+    expect(getByTestId("wishlist-length")).toHaveTextContent("0");
     fireEvent.click(getByRole("button"));
+    expect(getByTestId("wishlist-length")).toHaveTextContent("1");
     fireEvent.click(getByRole("button"));
     expect(getByTestId("wishlist-length")).toHaveTextContent("0");
   });

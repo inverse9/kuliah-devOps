@@ -10,7 +10,6 @@ const Card = (movie) => {
   return (
     <div
       data-testid={id}
-      key={id}
       className="bg-slate-800 text-slate-100 w-full sm:w-1/3 md:w-1/4 lg:w-1/6 group"
     >
       <div className="transition group-hover:translate-x-2 group-hover:-translate-y-2 relative">
