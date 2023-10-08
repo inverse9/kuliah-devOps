@@ -25,8 +25,12 @@ const Card = (movie) => {
             {overview}
           </div>
         </div>
-        <div className="absolute top-1 right-1 invisible group-hover:visible">
+        <div
+          id="hidden-parent"
+          className="absolute top-1 right-1 invisible group-hover:visible"
+        >
           <button
+            data-testid={id}
             title={wishlistState ? "remove from wishlist" : "wishlist"}
             onClick={() => updateWishlist(movie)}
             className="p-2 bg-red-500 hover:bg-red-600 active:bg-red-500"
