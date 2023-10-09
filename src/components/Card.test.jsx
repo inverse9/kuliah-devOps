@@ -4,6 +4,7 @@ import { WishlistProvider } from "../WishlistContext";
 
 const movie = {
   id: 1,
+  index: 0,
   original_title: "Drunken Master",
   poster_path: "drunken.jpg",
   overview:
@@ -18,7 +19,7 @@ describe("Card component", () => {
       </WishlistProvider>
     );
 
-    expect(getByTestId("1")).toBeInTheDocument();
+    expect(getByTestId("0")).toBeInTheDocument();
   });
 
   test("simulate a button click", () => {

@@ -35,9 +35,9 @@ const App = () => {
           <>Error fetching data</>
         ) : (
           <div className="flex flex-wrap gap-10 justify-center">
-            {movies.map((movie) => (
+            {movies.map((movie, index) => (
               <Fragment key={movie.id}>
-                <Card {...movie} />
+                <Card {...movie} index={index} />
               </Fragment>
             ))}
           </div>

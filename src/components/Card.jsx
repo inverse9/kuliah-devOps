@@ -3,13 +3,12 @@ import { useWishlistContext } from "../WishlistContext";
 
 const Card = (movie) => {
   const { updateWishlist, wishlist } = useWishlistContext();
-  const { id, original_title, poster_path, overview } = movie;
-
+  const { index, original_title, poster_path, overview } = movie;
   const wishlistState = wishlist.find((item) => item.id === movie.id);
 
   return (
     <div
-      data-testid={id}
+      data-testid={`card-${index}`}
       className="bg-slate-800 text-slate-100 w-full sm:w-1/3 md:w-1/4 lg:w-1/6 group"
     >
       <div className="transition group-hover:translate-x-2 group-hover:-translate-y-2 relative">
@@ -30,7 +29,7 @@ const Card = (movie) => {
           className="absolute top-1 right-1 invisible group-hover:visible"
         >
           <button
-            data-testid={id}
+            data-testid={index}
             title={wishlistState ? "remove from wishlist" : "wishlist"}
             onClick={() => updateWishlist(movie)}
             className="p-2 bg-red-500 hover:bg-red-600 active:bg-red-500"
