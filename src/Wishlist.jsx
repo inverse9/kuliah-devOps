@@ -14,17 +14,14 @@ const Wishlist = () => {
           data-testid="my-movies"
           className="flex flex-wrap gap-10 relative flex-1 px-6"
         >
-          {wishlist.map((movie) => (
+          {wishlist.map((movie, index) => (
             <Fragment key={movie.id}>
-              <Card {...movie} />
+              <Card {...movie} index={index} />
             </Fragment>
           ))}
         </div>
       ) : (
-        <div
-          data-testid="kosong"
-          className="text-red-500 font-bold text-5xl w-full"
-        >
+        <div className="text-red-500 font-bold text-5xl w-full">
           Wishlist kosong
         </div>
       )}
