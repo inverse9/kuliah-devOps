@@ -19,7 +19,7 @@ describe("Card component", () => {
       </WishlistProvider>
     );
 
-    expect(getByTestId("0")).toBeInTheDocument();
+    expect(getByTestId("card-0")).toBeInTheDocument();
   });
 
   test("simulate a button click", () => {

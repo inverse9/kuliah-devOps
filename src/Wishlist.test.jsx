@@ -46,7 +46,7 @@ describe("Wishlist page", () => {
     fireEvent.click(getAllByRole("button")[0]);
     expect(getByTestId("my-movies")).toBeInTheDocument();
 
-    fireEvent.click(getAllByRole("button")[0]);
+    fireEvent.click(getAllByRole("button")[1]);
     expect(getByText("Wishlist kosong")).toBeInTheDocument();
   });
 });
