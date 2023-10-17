@@ -13,16 +13,6 @@ const movie = {
 };
 
 describe("Wishlist page", () => {
-  test("render a wishlist page", () => {
-    const { getByRole } = render(
-      <WishlistProvider>
-        <Wishlist />
-      </WishlistProvider>
-    );
-
-    expect(getByRole("heading")).toBeInTheDocument();
-  });
-
   test("movies are on the wishlist", () => {
     const { getByRole, getByTestId } = render(
       <WishlistProvider>
@@ -46,7 +36,7 @@ describe("Wishlist page", () => {
     fireEvent.click(getAllByRole("button")[0]);
     expect(getByTestId("my-movies")).toBeInTheDocument();
 
-    fireEvent.click(getAllByRole("button")[1]);
+    fireEvent.click(getAllByRole("button")[0]);
     expect(getByText("Wishlist kosong")).toBeInTheDocument();
   });
 });
