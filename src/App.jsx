@@ -30,7 +30,7 @@ const App = () => {
         </ul>
       </nav>
       <section className="px-6">
-        <h1 className="font-bold mb-10 text-3xl text-red-500">Trending</h1>
+        <h1 className="font-bold mb-10 text-3xl text-red-500">Trending test</h1>
         {isErr ? (
           <>Error fetching data</>
         ) : (
